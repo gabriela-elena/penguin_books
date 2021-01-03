@@ -24,14 +24,20 @@ class PenguinBooks::CLI
     end
 
     def book_authors
-        chosen_authors = gets.strip
-        binding.pry
+        chosen_authors = gets.strip.
+        show_authors_for(chosen_author) if valid_input(chosen_author, @authors)
+        end
         #if valid_input(chosen_authors.to_i, @authors)
     end
-end
 
     def valid_input(input, data)
         input.to_i <= @data.length && input.to_i > 0
+    end
+
+    def show_authors_for(chosen_authors)
+        author = @authors[chosen_author - 1]
+        puts "Here are the books for #{author}"
+        binding.pry
     end
 
 end
