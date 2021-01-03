@@ -1,0 +1,3 @@
+class PenguinBook::Month
+
+end

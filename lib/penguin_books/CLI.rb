@@ -12,29 +12,28 @@ class PenguinBooks::CLI
 
     def author_spotlight
         # to be scraped instead
-        @authors = ['Sabaa Tahir', 'Ricky Yancey', 'Alison Goodman']
-        authors.save
+        @authors = PenguinBooks::Author.all
     end
 
     def new_releases
-        puts 'Choose a book to view more.'
+        puts 'Choose an author to view more.'
         # list new books
         @authors.each.with_index(1) do |author, index| 
             puts "#{index}. #{author}"
     end
+end
 
     def book_authors
-        chosen_authors = gets.strip.
+        chosen_author = gets.strip.to_i
         show_authors_for(chosen_author) if valid_input(chosen_author, @authors)
         end
         #if valid_input(chosen_authors.to_i, @authors)
-    end
 
     def valid_input(input, data)
         input.to_i <= @data.length && input.to_i > 0
     end
 
-    def show_authors_for(chosen_authors)
+    def show_authors_for(chosen_author)
         author = @authors[chosen_author - 1]
         puts "Here are the books for #{author}"
         ##To implement
