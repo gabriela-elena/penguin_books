@@ -37,7 +37,10 @@ class PenguinBooks::CLI
     def show_authors_for(chosen_authors)
         author = @authors[chosen_author - 1]
         puts "Here are the books for #{author}"
-        binding.pry
+        ##To implement
+        #PenguinBooks::book_authors.all.each.with_index(1) do | author |
+        #   puts book.name
+        #end
+        #get_books_authors
     end
-
 end
