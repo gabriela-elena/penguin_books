@@ -11,12 +11,15 @@ class PenguinBooks::CLI
     end
 
     def author_spotlight
+        PenguinBooks::Author.new("Sabaa Tahir")
+        PenguinBooks::Author.new("Ricky Yancey")
+        PenguinBooks::Author.new("Alison Goodman")
         # to be scraped instead
         @authors = PenguinBooks::Author.all
     end
 
     def new_releases
-        puts 'Choose an author to view more.'
+        puts 'Choose an author to view books.'
         # list new books
         @authors.each.with_index(1) do |author, index| 
             puts "#{index}. #{author}"
