@@ -37,13 +37,13 @@ end
         input.to_i <= @data.length && input.to_i > 0
     end
 
-    def show_authors_for(chosen_author)
+    def show_books_for(chosen_author)
         author = @authors[chosen_author - 1]
+        #PenguinBooks::Book.new("newest book", author)
+        #PenguinBooks::Book.new("previous book", author)
+        author.get_books
         puts "Here are the books for #{author.name}"
-        ##To implement
-        #PenguinBooks::book_authors.all.each.with_index(1) do | author |
-        #   puts book.name
-        #end
-        #get_books_authors
+        author.book.each.with_index(1) do |book, idx|
+            puts "#{idx}, #{book.name}"
     end
 end

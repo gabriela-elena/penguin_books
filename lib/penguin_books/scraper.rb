@@ -10,4 +10,8 @@ class PenguinBooks::Scraper
             PenguinBooks::Author.new(name)
         end
     end
+    def self.scrape_author(book)
+        PenguinBooks::Book.new("newest book", author)
+        PenguinBooks::Book.new("previous book", author)
+    end
 end
