@@ -5,7 +5,8 @@ require_relative "./penguin_books/author"
 require_relative "./penguin_books/scraper"
 
 require 'pry'
-require'nokogiri'
+require 'nokogiri'
+require 'open-uri'
 
 module PenguinBooks
   class Error < StandardError; end

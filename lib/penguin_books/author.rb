@@ -1,6 +1,7 @@
 class PenguinBooks::Author
+    attr_accessor :name, :books
     @@all = []
-    attr_accessor :name
+    
 
     def initialize(name)
         @name = name
@@ -8,7 +9,8 @@ class PenguinBooks::Author
     end
 
     def self.all
-       @@all 
+        PenguinBooks::Scraper.scrape_authors if @@all.empty?
+        @@all 
     end
 
     def save

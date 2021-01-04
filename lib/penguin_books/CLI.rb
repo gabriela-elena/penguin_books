@@ -11,7 +11,11 @@ class PenguinBooks::CLI
     end
 
     def author_spotlight
-        # to be scraped instead
+        #PenguinBooks::Author.new("Isabel Wilkerson")
+        #PenguinBooks::Author.new("J. Courtney Sullivan")
+        #PenguinBooks::Author.new("Hank Green")
+        #PenguinBooks::Author.new("Silvia Moreno-Garcia")
+        #PenguinBooks::Author.new("Ernest Cline")
         @authors = PenguinBooks::Author.all
     end
 
@@ -35,7 +39,7 @@ end
 
     def show_authors_for(chosen_author)
         author = @authors[chosen_author - 1]
-        puts "Here are the books for #{author}"
+        puts "Here are the books for #{author.name}"
         ##To implement
         #PenguinBooks::book_authors.all.each.with_index(1) do | author |
         #   puts book.name
