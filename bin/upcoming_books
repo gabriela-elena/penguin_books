@@ -3,3 +3,6 @@
 require_relative "../lib/penguin_books"
 
 PenguinBooks::CLI.new.call
+
+
+hello
