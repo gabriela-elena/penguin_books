@@ -2,6 +2,7 @@ class PenguinBooks::CLI
     attr_accessor :author, :book
 
     def call 
+        PenguinBooks::Scraper.scrape_authors
         puts "Welcome to Penguin Books!"
         author_spotlight
         new_releases
@@ -45,5 +46,6 @@ end
         puts "Here are the books for #{author.name}"
         author.book.each.with_index(1) do |book, idx|
             puts "#{idx}, #{book.name}"
+        end
     end
 end
