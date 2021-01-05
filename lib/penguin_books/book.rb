@@ -1,24 +1,35 @@
 class PenguinBooks::Book
-    attr_accessor :name, :book, :key_info
+    attr_accessor :name, :author_name, :book_title, :book_category, :book_summary
+ 
     @@all = []
-    
-    def initialize(name, author)
-        @name = name
-        @author = author
-        # notify author about new book
-        add_to_author
-        save
+ 
+    # URL = https://www.penguinrandomhouse.com/the-read-down/trending-this-week/"
+ 
+    def initialize (name=nil)
+      @@all << self
     end
-
+ 
     def self.all
-        @@all
+      @@all
+    end
+ 
+    def self.find(id)
+      self.all[id-1]
+    end
+ 
+    def author_name
+        @author_name ||= doc.css("author").text
+    end
+   
+    def book_title
+        @book_title ||= doc.css("ttl").text
     end
 
-    def add_to_author
-        @author.books << self unless @author.books.include?(self)
+    def book_category
+        @book_category ||= doc.css("cat-data").text
     end
 
-    def save
-        @@all << self
+    def book_summary
+        @book_summary ||= doc.css("div.desc").text
     end
 end

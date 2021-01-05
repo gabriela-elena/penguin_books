@@ -1,51 +1,59 @@
 class PenguinBooks::CLI
-    attr_accessor :author, :book
 
-    def call 
+    def call
+        welcome
+        trending_releases
+        list
+        goodbye
+    end
+
+    def welcome
+      puts ""
+      puts "Here is what's trending this week!"
+      puts ""
+    end
+
+    def trending_releases
+        #@authors = PenguinBooks::Author.all
         PenguinBooks::Scraper.scrape_authors
-        puts "Welcome to Penguin Books!"
-        author_spotlight
-        new_releases
-        book_authors
-        # upcoming_for(preorders)
-        # list_authors
-    end
-
-    def author_spotlight
-        #PenguinBooks::Author.new("Isabel Wilkerson")
-        #PenguinBooks::Author.new("J. Courtney Sullivan")
-        #PenguinBooks::Author.new("Hank Green")
-        #PenguinBooks::Author.new("Silvia Moreno-Garcia")
-        #PenguinBooks::Author.new("Ernest Cline")
-        @authors = PenguinBooks::Author.all
-    end
-
-    def new_releases
-        puts 'Choose an author to view books.'
-        # list new books
-        @authors.each.with_index(1) do |author, index| 
-            puts "#{index}. #{author.name}"
-    end
-end
-
-    def book_authors
-        chosen_author = gets.strip.to_i
-        show_authors_for(chosen_author) if valid_input(chosen_author, @authors)
+        PenguinBooks::Book.all.each.with_index(1) do |book, i|
+            puts "#{i}. #{book.name}"
+          end
         end
-        #if valid_input(chosen_authors.to_i, @authors)
+        puts ""
+      end
 
-    def valid_input(input, data)
-        input.to_i <= @data.length && input.to_i > 0
-    end
+      def print_book(book)
+        binding.pry
+        puts ""
+        puts book.ttl
+        puts ""
+        puts book.author_name
+        puts ""
+        puts book.cat_date
+        puts ""
+        puts book.book_summary
+        puts ""
+      end
 
-    def show_books_for(chosen_author)
-        author = @authors[chosen_author - 1]
-        #PenguinBooks::Book.new("newest book", author)
-        #PenguinBooks::Book.new("previous book", author)
-        author.get_books
-        puts "Here are the books for #{author.name}"
-        author.book.each.with_index(1) do |book, idx|
-            puts "#{idx}, #{book.name}"
+      def list
+        input = nil
+        while input != "exit"
+          puts "Select which book you'd like to see more about by typing a number."
+          puts "Type list to see the list of books again, or type exit to end the program."
+          input = gets.strip.downcase
+          if input.to_i > 0
+            if book = PenguinBooks::Book.find(input.to_i)
+                print_book(book)
+            end
+          elsif input == "list"
+            print_books
+          else
+            puts "Not sure what you want? Type menu or exit." unless input == "exit"
+          end
         end
-    end
-end
+
+        def goodbye
+            puts "Check back Soon!"
+          end
+      end
