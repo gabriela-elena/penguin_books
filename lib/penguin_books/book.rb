@@ -3,7 +3,7 @@ class PenguinBooks::Book
  
     @@all = []
  
-    # URL = https://www.penguinrandomhouse.com/the-read-down/womens-fiction-coming-soon/"
+    # URL = https://www.penguinrandomhouse.com/the-read-down/coming-soon"
  
     def initialize (author_name, book_title, book_category, isbn, book_summary, available_as)
         @author_name = author_name
