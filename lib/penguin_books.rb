@@ -7,3 +7,4 @@ require_relative "./penguin_books/book"
 require 'pry'
 require 'nokogiri'
 require 'open-uri'
+require 'colorize'

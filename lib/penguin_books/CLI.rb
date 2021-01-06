@@ -3,13 +3,13 @@ class PenguinBooks::CLI
     def call
         welcome
         trending_releases
-        list
+        menu
         goodbye
     end
 
     def welcome
       puts ""
-      puts "Here is what's trending this week!"
+      puts "Here is what's trending this week!".colorize(:light_green)
       puts ""
     end
 
@@ -17,7 +17,7 @@ class PenguinBooks::CLI
         #@books = PenguinBooks::Book.all
         PenguinBooks::Scraper.scrape_authors
         PenguinBooks::Book.all.each.with_index(1) do |book, i|
-            puts "#{i}. #{book.name}"
+            puts "#{i}. #{book.book_title}".colorize(:blue)
           end
         end
         puts ""
@@ -35,27 +35,29 @@ class PenguinBooks::CLI
         puts ""
       end
 
-      def list
+      def menu
         input = nil
         while input != "exit"
             puts ""
-            puts "Select a random book you'd like to see more about by typing a number between 1-5."
+            puts "Select a book title you'd like to see more about by typing a number.".colorize(:light_green)
             puts ""
-            puts "Type list to see the list of books again, or type exit to end the program."
+            puts "Type menu to see the list again.".colorize(:light_blue)
+            puts ""
+            puts "Done? Type exit to end the program.".colorize(:light_blue)
             puts ""
           input = gets.strip.downcase
           if input.to_i > 0
             if book = PenguinBooks::Book.find(input.to_i)
                 print_book(book)
             end
-          elsif input == "list"
-            print_book
+          elsif input == "menu"
+                print_book(book)
           else
-            puts "Not sure what you want? Type menu or exit." unless input == "exit"
+            puts "Not sure what you want? Type menu or exit.".colorize(:blue) unless input == "exit"
           end
         end
 
         def goodbye
-            puts "Check back Soon!"
+            puts "Check back for more books soon!".colorize(:light_green)
           end
       end
