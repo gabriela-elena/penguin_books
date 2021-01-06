@@ -21,9 +21,8 @@ class PenguinBooks::CLI
       PenguinBooks::Scraper.scrape_authors
       PenguinBooks::Book.all.each.with_index(1) do |book, i|
           puts "#{i}. #{book.book_title}".colorize(:blue)
+          puts ""
         end
-      end
-      puts ""
     end
 
     def print_book(book)
@@ -36,16 +35,17 @@ class PenguinBooks::CLI
       puts "Book Category:  #{book.book_category}".colorize(:light_green)
       puts ""
       puts "----------------------------------------"
-      puts "Book Review".colorize(:light_blue)
-      puts "----------------------------------------"
+      puts "Book Review:".colorize(:light_blue)
       puts "#{book.book_review}"
       puts ""
+      puts "----------------------------------------"
     end
 
     def menu
       input = nil
       while input != "exit"
           puts ""
+          puts "----------------------------------------"
           puts "Type a new number for another book."
           puts ""
           puts "Done? Type exit to end the program.".colorize(:light_green)
@@ -66,3 +66,4 @@ class PenguinBooks::CLI
           puts "Check back for more books soon!".colorize(:light_green)
         end
     end
+  end

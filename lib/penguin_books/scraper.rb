@@ -1,4 +1,3 @@
-
 class PenguinBooks::Scraper
 
     def self.scrape_authors
