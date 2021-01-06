@@ -11,10 +11,10 @@ class PenguinBooks::Scraper
             author_name = a["author"]
             book_title = a["ttl"]
             book_category = a["cat-data"]
-            book_summary = a.css("div.desc").text.strip
+            book_review = a.css('div.desc').text.strip
             # name = a.text
             #binding.pry
-            PenguinBooks::Book.new(author_name, book_title, book_category, book_summary)
+            PenguinBooks::Book.new(author_name, book_title, book_category, book_review)
             
         end
     end
