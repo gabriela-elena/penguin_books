@@ -1,5 +1,5 @@
 class PenguinBooks::Book
-    attr_accessor :name, :author_name, :book_title, :book_category, :book_summary, :isbn, :available_as
+    attr_accessor :author_name, :book_title, :book_category, :book_summary, :isbn, :available_as
  
     @@all = []
  

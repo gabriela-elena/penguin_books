@@ -11,30 +11,30 @@ class PenguinBooks::CLI
     puts ""
     puts "••••••••••••••••••••••••••••••••••••••••"
     puts ""
-    puts "BOOKS COMING SOON!".colorize(:blue)
+    puts "BOOKS COMING SOON!".colorize(:blue) #title for selection
     puts ""
     puts "••••••••••••••••••••••••••••••••••••••••"
-    puts "Type a number to see more information about an upcoming book.".colorize(:light_blue)
+    puts "Type a number to see more information about an upcoming book.".colorize(:light_blue) #instuctions
     puts ""
   end
 
   def trending_releases
       #@books = PenguinBooks::Book.all
-      PenguinBooks::Scraper.scrape_authors
-      PenguinBooks::Book.all.each.with_index(1) do |book, i|
-          puts "#{i}. #{book.book_title}".colorize(:light_gray)
+      PenguinBooks::Scraper.scrape_authors #scraper
+      PenguinBooks::Book.all.each.with_index(1) do |book, i| 
+          puts "#{i}. #{book.book_title}".colorize(:light_gray) #puts integer with a book title from website
           puts ""
         end
     end
 
-    def print_book(book)
+    def print_book(book) 
       puts ""
       puts "••••••••••••••••••••••••••••••••••••••••"
       puts""
-      puts "#{book.book_title}".colorize(:light_blue)
+      puts "#{book.book_title}".colorize(:light_blue) #book title
       puts""
       puts "••••••••••••••••••••••••••••••••••••••••"
-      puts ""
+      puts "" #includes attr_accessor :author_name, :book_title, :book_category, :book_summary, :isbn, :available_as
       puts "Book Author:".colorize(:light_cyan)   
       puts "#{book.author_name}"
       puts ""
@@ -58,12 +58,12 @@ class PenguinBooks::CLI
       while input != "exit"
           puts ""
           puts "----------------------------------------"
-          puts "Type a new number for another book.".colorize(:light_green)
+          puts "Type a new number for another book.".colorize(:light_green) #instructions for another selection
           puts ""
           puts "Done? Type exit to end the program.".colorize(:light_magenta)
           puts ""
         input = gets.strip.downcase
-        if input.to_i > 0
+        if input.to_i > 0 
           if book = PenguinBooks::Book.find(input.to_i)
               print_book(book)
           end
@@ -74,7 +74,7 @@ class PenguinBooks::CLI
         end
       end
 
-      def goodbye
+      def goodbye #exit message
           puts "Check back for more books soon!".colorize(:light_cyan)
         end
     end
