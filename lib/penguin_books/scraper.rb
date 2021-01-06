@@ -13,7 +13,9 @@ class PenguinBooks::Scraper
             book_category = a["cat-data"]
             book_summary = a.css('div.desc').text.strip
             # name = a.text
-            PenguinBooks::Book.new(name)
+            #binding.pry
+            PenguinBooks::Book.new(author_name, book_title, book_category, book_summary)
+            
         end
     end
    
