@@ -3,11 +3,10 @@
     2a. class relationships
 
 - user is asked what books
-- user sees newest books
-- user sees upcoming books for preorder
-- user selects book with author
-- user sees all books by author
-- allow user to select author
+- user sees upcoming books
+- user selects book title
+- user sees books and info about the book
+- allow user to select another book
 
 Classes
 - books
