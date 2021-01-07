@@ -1,20 +1,19 @@
-
 class PenguinBooks::Scraper
 
-    def self.scrape_authors
-        doc = Nokogiri::HTML(open("https://www.penguinrandomhouse.com/the-read-down/trending-this-week/"))
-        container = doc.css("ol.awesome-list") #grab the container containing all books
+    def self.scrape_books
+        doc = Nokogiri::HTML(open("https://www.penguinrandomhouse.com/the-read-down/coming-soon/"))
+        container = doc.css("ol.awesome-list") #container containing all books
         books = container.css("li.inner-facade") # select all li's that contain individual book info
 
         books.each do |a|
-            #binding.pry
-            author_name = a["author"]
-            book_title = a["ttl"]
-            book_category = a["cat-data"]
-            book_summary = a.css("div.desc").text.strip
-            # name = a.text
-            #binding.pry
-            PenguinBooks::Book.new(author_name, book_title, book_category, book_summary)
+            author_name = a["author"] #author
+            book_title = a["ttl"] #title of book
+            book_category = a["cat-data"] #i.e biography, fiction, etc
+            book_summary = a.css("div.desc").text.strip #book summary text
+            available_as = a["format-data"] #i.e Paperback, Hardcover, Ebook, or audio book
+            isbn = a["data-isbn"] #isbn number
+
+            PenguinBooks::Book.new(author_name, book_title, book_category, book_summary, available_as, isbn)
             
         end
     end
