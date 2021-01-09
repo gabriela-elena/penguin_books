@@ -2,7 +2,7 @@ class PenguinBooks::CLI
   def call
     welcome
     trending_releases
-    menu
+    user_prompt
 end
 
 def welcome #title for selection
@@ -50,12 +50,12 @@ def trending_releases
   puts ""
   end
 
-  def menu #user instructions
-    input = nil
+  def user_prompt #user instructions
+    input = nil #repeats instructions
     while input != "exit"
       puts ""
       puts "----------------------------------------"
-      puts "• Type a new number for another book.".colorize(:light_green) #instructions for another selection
+      puts "• Type a number to view a book.".colorize(:light_green) 
       puts ""
       puts "• Type menu to see the list of books again.".colorize(:light_green)
       puts ""
@@ -69,11 +69,10 @@ def trending_releases
       elsif input == "menu"
         trending_releases
       else
-        puts "Check back for more books soon!".colorize(:light_green) 
+        puts "Check back for more books soon!".colorize(:light_green) #exit message
         unless input == "exit"
       end
     end
   end
 end
-end
-    
+end    
