@@ -22,32 +22,34 @@ def trending_releases
       puts "#{i}. #{book.book_title}".colorize(:light_gray) #puts integer with a book title from website
       puts ""
       end
+
+      
   end
 
   def print_book(book)
     puts ""
-  puts "••••••••••••••••••••••••••••••••••••••••"
-  puts""
-  puts "#{book.book_title}".colorize(:light_blue) #book title
-  puts""
-  puts "••••••••••••••••••••••••••••••••••••••••"
-  puts ""
-  puts "Book Author:".colorize(:light_cyan)   
-  puts "#{book.author_name}"
-  puts ""
-  puts "Book Category:".colorize(:light_cyan)
-  puts "#{book.book_category}"
-  puts ""
-  puts "Book ISBN:".colorize(:light_cyan)       
-  puts "#{book.isbn}"
-  puts ""
-  puts "Available As:".colorize(:light_cyan)
-  puts "#{book.available_as}"
-  puts ""
-  puts "Book Summary:".colorize(:light_cyan)
-  puts "#{book.book_summary}"
-  puts ""
-  puts ""
+    puts "••••••••••••••••••••••••••••••••••••••••"
+    puts""
+    puts "#{book.book_title}".colorize(:light_blue) #book title
+    puts""
+    puts "••••••••••••••••••••••••••••••••••••••••"
+    puts ""
+    puts "Book Author:".colorize(:light_cyan)   
+    puts "#{book.author_name}"
+    puts ""
+    puts "Book Category:".colorize(:light_cyan)
+    puts "#{book.book_category}"
+    puts ""
+    puts "Book ISBN:".colorize(:light_cyan)       
+    puts "#{book.isbn}"
+    puts ""
+    puts "Available As:".colorize(:light_cyan)
+    puts "#{book.available_as}"
+    puts ""
+    puts "Book Summary:".colorize(:light_cyan)
+    puts "#{book.book_summary}"
+    puts ""
+    puts ""
   end
 
   def user_prompt #user instructions

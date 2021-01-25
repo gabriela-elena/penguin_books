@@ -16,13 +16,11 @@ class PenguinBooks::Book
         @isbn = isbn
         @@all << self #new object
     end
- 
+  
     def self.all
       @@all
     end
- 
     def self.find(id)
       self.all[id-1]
     end
-    
 end
